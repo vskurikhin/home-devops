@@ -1,0 +1,15 @@
+[Unit]
+Description=Stolon Proxy
+Documentation=https://github.com/sorintlab/stolon
+After=network.target
+
+[Service]
+Environment=PATH=/usr/pgsql-12/bin:$PATH
+User=postgres
+Type=simple
+ExecStart=/usr/local/stolon/bin/stolon-proxy --cluster-name stolon-cluster --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --listen-address 192.168.88.51 --port 25432
+Restart=on-abort
+LimitNOFILE=65535
+
+[Install]
+WantedBy=stolon-keeper.service
