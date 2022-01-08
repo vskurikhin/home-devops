@@ -6,7 +6,7 @@ After=network.target
 [Service]
 User=etcd
 Type=notify
-ExecStart=/usr/local/bin/etcd --name dns000 --initial-advertise-peer-urls 'http://192.168.88.10:2380' --listen-peer-urls 'http://192.168.88.10:2380' --advertise-client-urls 'http://192.168.88.10:2379' --listen-client-urls 'http://192.168.88.10:2379' --initial-cluster dns000=http://192.168.88.10:2380,pgs001=http://192.168.88.51:2380,pgs002=http://192.168.88.52:2380 --initial-cluster-state new --initial-cluster-token XXXXXXXXXXXXXXXXXXXXXXXX --data-dir /var/lib/etcd
+ExecStart=/usr/local/bin/etcd --name dns000 --initial-advertise-peer-urls 'http://192.168.88.10:2380' --listen-peer-urls 'http://192.168.88.10:2380' --advertise-client-urls 'http://192.168.88.10:2379' --listen-client-urls 'http://192.168.88.10:2379' --initial-cluster dns000=http://192.168.88.10:2380,pgs001=http://192.168.88.51:2380,pgs002=http://192.168.88.52:2380 --initial-cluster-state new --initial-cluster-token XXXXXXXXXXXXXXXXXXXXXXXX --auto-compaction-retention=10 --heartbeat-interval=300 --election-timeout=170 --data-dir /var/lib/etcd
 Restart=always
 RestartSec=10s
 LimitNOFILE=40000
