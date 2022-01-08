@@ -1,10 +1,15 @@
 127.0.0.1 			localhost 	localhost.rune.ru
 # VLAN 88
-192.168.88.10                   dns000.rune.ru.
+# 192.168.88.10                   dns000.rune.ru.
+192.168.88.11                   nfs001.rune.ru.
 192.168.88.51           	pgs001.rune.ru.
 192.168.88.52           	pgs002.rune.ru.
 192.168.88.56           	kafka1.rune.ru.
 192.168.88.57           	kafka2.rune.ru.
+192.168.88.58                   pgs1.rune.ru.
+192.168.88.62           	xn2.rune.ru.	xn21.rune.ru
+192.168.88.63           	xn3.rune.ru.	xn31.rune.ru
+192.168.88.64           	xn4.rune.ru.	xn41.rune.ru
 192.168.88.69           	all1.rune.ru. x220.rune.ru.
 192.168.88.70           	all2.rune.ru. probook.rune.ru.
 192.168.88.80           	k8s000.rune.ru. k8s000 registry.rune.ru. k8s
@@ -12,4 +17,4 @@
 192.168.88.82           	k8s002.rune.ru. k8s002
 192.168.88.83           	k8s003.rune.ru. k8s003
 192.168.88.84           	k8s004.rune.ru. k8s004
-192.168.88.88           	kubernetes-dashboard.rune.ru.
+192.168.88.88           	svn.rune.ru. kubernetes-dashboard.rune.ru. jenkins.rune.ru. jenkinsci.rune.ru. daybook3.rune.ru.
