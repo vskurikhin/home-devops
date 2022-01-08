@@ -1,0 +1,46 @@
+# systemctl disable stolon-proxy.service
+# systemctl stop stolon-proxy.service
+
+# systemctl disable stolon-keeper.service
+# systemctl stop stolon-keeper.service
+
+# systemctl disable stolon-sentinel.service
+# systemctl stop stolon-sentinel.service
+
+# systemctl stop etcd.service
+# rm -rf /var/lib/etcd/member/
+# systemctl start etcd.service
+# systemctl status etcd.service
+
+# cd /usr/local/stolon/
+# ./bin/stolonctl --cluster-name stolon-cluster --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' init
+# systemctl enable stolon-sentinel.service
+# systemctl start stolon-sentinel.service
+# systemctl status stolon-sentinel.service
+
+# systemctl enable stolon-keeper.service
+# systemctl start stolon-keeper.service
+
+# journalctl -xef
+
+# cat /var/lib/pgsql/12-stolon-keeper/postgres/postgresql.conf 
+# 
+# history 
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"shared_buffers" : "1GB" } }'
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"effective_cache_size" : "2300MB" } }'
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"maintenance_work_mem" : "256MB" } }'
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"checkpoint_completion_target" : "0.9" } }'
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"wal_buffers" : "16MB" } }'
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"default_statistics_target" : "100" } }'
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"random_page_cost" : "4" } }'
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"effective_io_concurrency" : "2" } }'
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"work_mem" : "1048kB" } }'
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"min_wal_size" : "256MB" } }'
+
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"max_worker_processes" : "2" } }'
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"max_parallel_workers_per_gather" : "1" } }'
+
+# /usr/local/bin/stolonctl --cluster-name stolon-cluster update --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --patch '{ "pgParameters" : {"max_parallel_maintenance_workers" : "1" } }'
+
+# systemctl enable stolon-proxy.service
+# systemctl start stolon-proxy.service
