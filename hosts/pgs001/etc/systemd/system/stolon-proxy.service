@@ -7,7 +7,7 @@ After=network.target
 Environment=PATH=/usr/pgsql-12/bin:$PATH
 User=postgres
 Type=simple
-ExecStart=/usr/local/stolon/bin/stolon-proxy --cluster-name stolon-cluster --store-backend=etcdv3 --store-endpoints='http://192.168.88.51:2379' --listen-address 192.168.88.51 --port 25432
+ExecStart=/usr/local/stolon/bin/stolon-proxy --cluster-name stolon-cluster --store-backend=etcdv3 --store-endpoints='http://192.168.88.69:2379,http://192.168.88.70:2379,http://192.168.88.71:2379' --listen-address 192.168.88.51 --port 25432
 Restart=on-abort
 LimitNOFILE=65535
 

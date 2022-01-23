@@ -7,7 +7,7 @@ After=network.target
 Environment=PATH=/usr/pgsql-12/bin:$PATH
 User=postgres
 Type=simple
-ExecStart=/usr/local/stolon/bin/stolon-keeper --cluster-name stolon-cluster --store-backend=etcdv3 --uid postgres1 --data-dir /var/lib/pgsql/12-stolon-keeper --pg-su-password='XXXX' --pg-repl-username=replicator --pg-repl-password='XXXX' --pg-repl-auth-method='md5' --pg-listen-address=192.168.88.51 --store-endpoints='http://192.168.88.51:2379'
+ExecStart=/usr/local/stolon/bin/stolon-keeper --cluster-name stolon-cluster --store-backend=etcdv3 --uid postgres1 --data-dir /var/lib/pgsql/12-stolon-keeper --pg-su-password='XXXX' --pg-repl-username=replicator --pg-repl-password='XXXX' --pg-repl-auth-method='md5' --pg-listen-address=192.168.88.51 --store-endpoints='http://192.168.88.69:2379,http://192.168.88.70:2379,http://192.168.88.71:2379'
 Restart=on-abort
 LimitNOFILE=65535
 
