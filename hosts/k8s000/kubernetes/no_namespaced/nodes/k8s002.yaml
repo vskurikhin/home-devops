@@ -1,0 +1,161 @@
+apiVersion: v1
+kind: Node
+metadata:
+  annotations:
+    flannel.alpha.coreos.com/backend-data: '{"VNI":1,"VtepMAC":"2e:6a:da:e8:98:c9"}'
+    flannel.alpha.coreos.com/backend-type: vxlan
+    flannel.alpha.coreos.com/kube-subnet-manager: "true"
+    flannel.alpha.coreos.com/public-ip: 192.168.88.82
+    kubeadm.alpha.kubernetes.io/cri-socket: /var/run/dockershim.sock
+    node.alpha.kubernetes.io/ttl: "0"
+    volumes.kubernetes.io/controller-managed-attach-detach: "true"
+  creationTimestamp: "2021-12-26T12:30:21Z"
+  labels:
+    beta.kubernetes.io/arch: amd64
+    beta.kubernetes.io/os: linux
+    kubernetes.io/arch: amd64
+    kubernetes.io/hostname: k8s002
+    kubernetes.io/os: linux
+  name: k8s002
+  resourceVersion: "4338403"
+  uid: 60852ed9-2a37-4c3b-b729-25d0f1400df3
+spec:
+  podCIDR: 10.244.2.0/24
+  podCIDRs:
+  - 10.244.2.0/24
+status:
+  addresses:
+  - address: 192.168.88.82
+    type: InternalIP
+  - address: k8s002
+    type: Hostname
+  allocatable:
+    cpu: "2"
+    ephemeral-storage: "13757526813"
+    hugepages-1Gi: "0"
+    hugepages-2Mi: "0"
+    memory: 7197168Ki
+    pods: "110"
+  capacity:
+    cpu: "2"
+    ephemeral-storage: 14578Mi
+    hugepages-1Gi: "0"
+    hugepages-2Mi: "0"
+    memory: 7299568Ki
+    pods: "110"
+  conditions:
+  - lastHeartbeatTime: "2022-01-04T17:04:32Z"
+    lastTransitionTime: "2022-01-04T17:04:32Z"
+    message: Flannel is running on this node
+    reason: FlannelIsUp
+    status: "False"
+    type: NetworkUnavailable
+  - lastHeartbeatTime: "2022-01-23T09:35:52Z"
+    lastTransitionTime: "2021-12-26T12:30:21Z"
+    message: kubelet has sufficient memory available
+    reason: KubeletHasSufficientMemory
+    status: "False"
+    type: MemoryPressure
+  - lastHeartbeatTime: "2022-01-23T09:35:52Z"
+    lastTransitionTime: "2021-12-26T12:30:21Z"
+    message: kubelet has no disk pressure
+    reason: KubeletHasNoDiskPressure
+    status: "False"
+    type: DiskPressure
+  - lastHeartbeatTime: "2022-01-23T09:35:52Z"
+    lastTransitionTime: "2021-12-26T12:30:21Z"
+    message: kubelet has sufficient PID available
+    reason: KubeletHasSufficientPID
+    status: "False"
+    type: PIDPressure
+  - lastHeartbeatTime: "2022-01-23T09:35:52Z"
+    lastTransitionTime: "2021-12-26T12:31:22Z"
+    message: kubelet is posting ready status
+    reason: KubeletReady
+    status: "True"
+    type: Ready
+  daemonEndpoints:
+    kubeletEndpoint:
+      Port: 10250
+  images:
+  - names:
+    - quay.io/quarkus/ubi-quarkus-native-image@sha256:ed4992f625fe78e193a91ee63bb111f44e86395c1f25478f37b58ac0d7405b33
+    sizeBytes: 1240661858
+  - names:
+    - quay.io/quarkus/ubi-quarkus-native-image@sha256:bd1b7e3e81b60239611eaae77aa390150b33da7fc4fb91028dee4034f1b5ab0e
+    - quay.io/quarkus/ubi-quarkus-native-image:21.3-java11
+    sizeBytes: 1240661858
+  - names:
+    - vskurikhin/jenkins-slave-gradle@sha256:4f9274d821414f3fc5507164826671b943ae97aaa6dd1d4e672e6d3a250e7b6b
+    - vskurikhin/jenkins-slave-gradle:latest
+    - vskurikhin/jenkins-slave-gradle:v1.0
+    sizeBytes: 835403823
+  - names:
+    - jenkinsci/jnlp-slave@sha256:77983608c6f9715aa22c20f515054fe56178522f21be82d3aa972ac0e9564518
+    - jenkinsci/jnlp-slave:latest
+    sizeBytes: 522551767
+  - names:
+    - vskurikhin/jenkins-slave-docker@sha256:178d05b91e8bcf02c8088b213c6c15cd0593f0aca54e8fc864bbe17c47cbfd05
+    - vskurikhin/jenkins-slave-docker:latest
+    sizeBytes: 490417403
+  - names:
+    - jenkins/inbound-agent@sha256:544634bb5019f5c553d1835d728107ce014ae5ee26b1f5ed09a8164b7b418b19
+    - jenkins/inbound-agent:4.11-1
+    - jenkins/inbound-agent:4.11-1-jdk11
+    sizeBytes: 333576009
+  - names:
+    - kubernetesui/dashboard@sha256:526850ae4ea9aba360e72b6df69fd3126b129d446efe83ac5250282b85f95b7f
+    - kubernetesui/dashboard:v2.4.0
+    sizeBytes: 221371283
+  - names:
+    - docker@sha256:a729cce205a05b0b86dc8dca87823efaffc3f74979fe7dc86a707c2fbf631b61
+    - docker:latest
+    sizeBytes: 216175476
+  - names:
+    - nginx/nginx-ingress@sha256:2f7fde407e5f5643a922e4377c7f3a93abd1a0315782d2b96608a4a31f6cb3d4
+    - nginx/nginx-ingress:2.0.3
+    sizeBytes: 174491997
+  - names:
+    - vskurikhin/daybook3@sha256:fb8a151bff67f6340b271ce4f0d7b2b88b4d669b9552726c93b03d68316c0911
+    - vskurikhin/daybook3:latest
+    - vskurikhin/daybook3:v3.5
+    sizeBytes: 150189551
+  - names:
+    - k8s.gcr.io/kube-proxy@sha256:6b4e3c151599bb458f59502648b135ce6f6fda2784c77c4d127c25ed4a57d53c
+    - k8s.gcr.io/kube-proxy:v1.22.5
+    sizeBytes: 103661425
+  - names:
+    - registry.access.redhat.com/ubi8/ubi-minimal@sha256:c536d4c63253318fdfc1db499f8f4bb0881db7fbd6f3d1554b4d54c812f85cc7
+    - registry.access.redhat.com/ubi8/ubi-minimal:8.4
+    sizeBytes: 102433391
+  - names:
+    - quay.io/coreos/flannel@sha256:9a296fbb67790659adc3701e287adde3c59803b7fcefe354f1fc482840cdb3d9
+    - quay.io/coreos/flannel:v0.15.1
+    sizeBytes: 69516425
+  - names:
+    - registry.cn-beijing.aliyuncs.com/kubesphereio/nfs-subdir-external-provisioner@sha256:63d5e04551ec8b5aae83b6f35938ca5ddc50a88d85492d9731810c31591fa4c9
+    - registry.cn-beijing.aliyuncs.com/kubesphereio/nfs-subdir-external-provisioner:v4.0.2
+    sizeBytes: 43825047
+  - names:
+    - kubernetesui/metrics-scraper@sha256:36d5b3f60e1a144cc5ada820910535074bdf5cf73fb70d1ff1681537eef4e172
+    - kubernetesui/metrics-scraper:v1.0.7
+    sizeBytes: 34446077
+  - names:
+    - rancher/mirrored-flannelcni-flannel-cni-plugin@sha256:bfe8f30c74bc6f31eba0cc6659e396dbdd5ab171314ed542cc238ae046660ede
+    - rancher/mirrored-flannelcni-flannel-cni-plugin:v1.0.0
+    sizeBytes: 9031177
+  - names:
+    - k8s.gcr.io/pause@sha256:1ff6c18fbef2045af6b9c16bf034cc421a29027b800e4f9b68ae9b1cb3e9ae07
+    - k8s.gcr.io/pause:3.5
+    sizeBytes: 682696
+  nodeInfo:
+    architecture: amd64
+    bootID: 39a6c8ef-5b30-4808-9021-96011e1b15f9
+    containerRuntimeVersion: docker://20.10.12
+    kernelVersion: 4.18.0-348.7.1.el8_5.x86_64
+    kubeProxyVersion: v1.22.5
+    kubeletVersion: v1.22.5
+    machineID: 907babbb36634c5cbdc218c0d3158eb6
+    operatingSystem: linux
+    osImage: AlmaLinux 8.5 (Arctic Sphynx)
+    systemUUID: 907babbb-3663-4c5c-bdc2-18c0d3158eb6
