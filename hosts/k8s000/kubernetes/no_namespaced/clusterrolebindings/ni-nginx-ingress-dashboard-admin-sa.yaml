@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2021-12-26T18:26:15Z"
+  name: ni-nginx-ingress-dashboard-admin-sa
+  resourceVersion: "33218"
+  uid: 7d0f6111-4451-4ba5-8391-ebbb3c0f2952
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ni-nginx-ingress
+subjects:
+- kind: ServiceAccount
+  name: dashboard-admin-sa
+  namespace: default

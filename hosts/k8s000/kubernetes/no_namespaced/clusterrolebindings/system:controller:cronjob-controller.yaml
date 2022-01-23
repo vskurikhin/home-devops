@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2021-12-26T12:29:14Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:cronjob-controller
+  resourceVersion: "171"
+  uid: 85a01f7a-ba13-41c3-8a43-a8d90c84bc57
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:controller:cronjob-controller
+subjects:
+- kind: ServiceAccount
+  name: cronjob-controller
+  namespace: kube-system
