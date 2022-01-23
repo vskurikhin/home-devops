@@ -1,0 +1,15 @@
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  annotations:
+    meta.helm.sh/release-name: ni
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2021-12-26T13:32:22Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: nginx
+  resourceVersion: "6026"
+  uid: b06cc211-9491-4269-9cdf-5b3e25aa08fe
+spec:
+  controller: nginx.org/ingress-controller
