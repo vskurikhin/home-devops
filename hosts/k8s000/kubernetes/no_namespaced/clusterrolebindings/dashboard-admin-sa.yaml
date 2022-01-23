@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2021-12-26T18:22:14Z"
+  name: dashboard-admin-sa
+  resourceVersion: "32851"
+  uid: 14dbd110-8bf8-4614-99f8-386f2d033faa
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: dashboard-admin-sa
+  namespace: default

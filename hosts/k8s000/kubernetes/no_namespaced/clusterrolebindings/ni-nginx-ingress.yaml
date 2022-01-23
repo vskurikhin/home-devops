@@ -1,0 +1,23 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: ni
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2021-12-26T13:32:21Z"
+  labels:
+    app.kubernetes.io/instance: ni
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: ni-nginx-ingress
+    helm.sh/chart: nginx-ingress-0.11.3
+  name: ni-nginx-ingress
+  resourceVersion: "6019"
+  uid: 5080762a-a2b2-46b4-a535-14159f909128
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ni-nginx-ingress
+subjects:
+- kind: ServiceAccount
+  name: ni-nginx-ingress
+  namespace: default
