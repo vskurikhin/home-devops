@@ -1,0 +1,10 @@
+apiVersion: v1
+conditions:
+- message: 'Get "http://127.0.0.1:10251/healthz": dial tcp 127.0.0.1:10251: connect:
+    connection refused'
+  status: "False"
+  type: Healthy
+kind: ComponentStatus
+metadata:
+  creationTimestamp: null
+  name: scheduler
