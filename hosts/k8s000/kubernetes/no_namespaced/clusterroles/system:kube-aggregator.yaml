@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2021-12-26T12:29:09Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:kube-aggregator
+  resourceVersion: "102"
+  uid: 008d86a4-9a44-4022-9b25-f38b4d7b7062
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - endpoints
+  - services
+  verbs:
+  - get
+  - list
+  - watch
