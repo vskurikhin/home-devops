@@ -1,0 +1,17 @@
+apiVersion: flowcontrol.apiserver.k8s.io/v1beta1
+kind: PriorityLevelConfiguration
+metadata:
+  annotations:
+    apf.kubernetes.io/autoupdate-spec: "true"
+  creationTimestamp: "2021-12-26T12:29:07Z"
+  generation: 1
+  name: catch-all
+  resourceVersion: "84"
+  uid: 44c57f82-2b9f-45db-a985-63d65310f7ec
+spec:
+  limited:
+    assuredConcurrencyShares: 5
+    limitResponse:
+      type: Reject
+  type: Limited
+status: {}
