@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2021-12-26T12:29:09Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:auth-delegator
+  resourceVersion: "100"
+  uid: f8df397c-1f50-4534-8afb-91327bb54998
+rules:
+- apiGroups:
+  - authentication.k8s.io
+  resources:
+  - tokenreviews
+  verbs:
+  - create
+- apiGroups:
+  - authorization.k8s.io
+  resources:
+  - subjectaccessreviews
+  verbs:
+  - create

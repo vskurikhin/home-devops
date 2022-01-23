@@ -1,0 +1,70 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2021-12-26T12:29:11Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:horizontal-pod-autoscaler
+  resourceVersion: "129"
+  uid: 80bf11a6-2349-4ba4-96a5-d83818153eab
+rules:
+- apiGroups:
+  - autoscaling
+  resources:
+  - horizontalpodautoscalers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - autoscaling
+  resources:
+  - horizontalpodautoscalers/status
+  verbs:
+  - update
+- apiGroups:
+  - '*'
+  resources:
+  - '*/scale'
+  verbs:
+  - get
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - list
+- apiGroups:
+  - ""
+  resourceNames:
+  - 'http:heapster:'
+  - 'https:heapster:'
+  resources:
+  - services/proxy
+  verbs:
+  - get
+- apiGroups:
+  - metrics.k8s.io
+  resources:
+  - pods
+  verbs:
+  - list
+- apiGroups:
+  - custom.metrics.k8s.io
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+- apiGroups:
+  - ""
+  - events.k8s.io
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+  - update

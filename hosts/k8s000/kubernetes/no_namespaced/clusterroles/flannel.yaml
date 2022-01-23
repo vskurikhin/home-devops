@@ -1,0 +1,38 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRole","metadata":{"annotations":{},"name":"flannel"},"rules":[{"apiGroups":["extensions"],"resourceNames":["psp.flannel.unprivileged"],"resources":["podsecuritypolicies"],"verbs":["use"]},{"apiGroups":[""],"resources":["pods"],"verbs":["get"]},{"apiGroups":[""],"resources":["nodes"],"verbs":["list","watch"]},{"apiGroups":[""],"resources":["nodes/status"],"verbs":["patch"]}]}
+  creationTimestamp: "2021-12-26T12:30:31Z"
+  name: flannel
+  resourceVersion: "586"
+  uid: 716ee35c-6b64-4375-88cc-31a93ff84cb4
+rules:
+- apiGroups:
+  - extensions
+  resourceNames:
+  - psp.flannel.unprivileged
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - nodes/status
+  verbs:
+  - patch
