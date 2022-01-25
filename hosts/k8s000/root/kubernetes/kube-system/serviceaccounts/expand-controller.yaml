@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2021-12-26T12:29:35Z"
+  name: expand-controller
+  namespace: kube-system
+  resourceVersion: "376"
+  uid: 213c31b8-208f-440d-8fe4-4219ef849465
+secrets:
+- name: expand-controller-token-vpnds

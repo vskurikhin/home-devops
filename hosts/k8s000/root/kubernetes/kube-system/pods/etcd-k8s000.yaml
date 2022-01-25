@@ -1,0 +1,149 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubeadm.kubernetes.io/etcd.advertise-client-urls: https://192.168.88.80:2379
+    kubernetes.io/config.hash: 4392277796ea464062759b8791329709
+    kubernetes.io/config.mirror: 4392277796ea464062759b8791329709
+    kubernetes.io/config.seen: "2021-12-26T15:28:55.411243554+03:00"
+    kubernetes.io/config.source: file
+    seccomp.security.alpha.kubernetes.io/pod: runtime/default
+  creationTimestamp: "2021-12-26T12:29:16Z"
+  labels:
+    component: etcd
+    tier: control-plane
+  name: etcd-k8s000
+  namespace: kube-system
+  ownerReferences:
+  - apiVersion: v1
+    controller: true
+    kind: Node
+    name: k8s000
+    uid: 6588a2f6-cead-4dba-af3d-548cfc85b695
+  resourceVersion: "1071146"
+  uid: 5e261202-143d-49e7-b285-2e6820a7193f
+spec:
+  containers:
+  - command:
+    - etcd
+    - --advertise-client-urls=https://192.168.88.80:2379
+    - --cert-file=/etc/kubernetes/pki/etcd/server.crt
+    - --client-cert-auth=true
+    - --data-dir=/var/lib/etcd
+    - --initial-advertise-peer-urls=https://192.168.88.80:2380
+    - --initial-cluster=k8s000=https://192.168.88.80:2380
+    - --key-file=/etc/kubernetes/pki/etcd/server.key
+    - --listen-client-urls=https://127.0.0.1:2379,https://192.168.88.80:2379
+    - --listen-metrics-urls=http://127.0.0.1:2381
+    - --listen-peer-urls=https://192.168.88.80:2380
+    - --name=k8s000
+    - --peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt
+    - --peer-client-cert-auth=true
+    - --peer-key-file=/etc/kubernetes/pki/etcd/peer.key
+    - --peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
+    - --snapshot-count=10000
+    - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
+    image: k8s.gcr.io/etcd:3.5.0-0
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 8
+      httpGet:
+        host: 127.0.0.1
+        path: /health
+        port: 2381
+        scheme: HTTP
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 15
+    name: etcd
+    resources:
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    startupProbe:
+      failureThreshold: 24
+      httpGet:
+        host: 127.0.0.1
+        path: /health
+        port: 2381
+        scheme: HTTP
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 15
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/lib/etcd
+      name: etcd-data
+    - mountPath: /etc/kubernetes/pki/etcd
+      name: etcd-certs
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostNetwork: true
+  nodeName: k8s000
+  preemptionPolicy: PreemptLowerPriority
+  priority: 2000001000
+  priorityClassName: system-node-critical
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    operator: Exists
+  volumes:
+  - hostPath:
+      path: /etc/kubernetes/pki/etcd
+      type: DirectoryOrCreate
+    name: etcd-certs
+  - hostPath:
+      path: /var/lib/etcd
+      type: DirectoryOrCreate
+    name: etcd-data
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-01-04T17:03:31Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-01-04T17:03:31Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-01-04T17:03:31Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-01-04T17:03:31Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://09d2d35e57007857596e0a2d61b23bd3d657a5db45ccfeda26ed4386b53307f6
+    image: k8s.gcr.io/etcd:3.5.0-0
+    imageID: docker-pullable://k8s.gcr.io/etcd@sha256:9ce33ba33d8e738a5b85ed50b5080ac746deceed4a7496c550927a7a19ca3b6d
+    lastState:
+      terminated:
+        containerID: docker://eca73e973a2307345a16ffaf26399b96b7baff6d5eafcd404973efb23fcf03fa
+        exitCode: 255
+        finishedAt: "2022-01-04T17:02:34Z"
+        reason: Error
+        startedAt: "2022-01-04T13:38:17Z"
+    name: etcd
+    ready: true
+    restartCount: 12
+    started: true
+    state:
+      running:
+        startedAt: "2022-01-04T17:03:13Z"
+  hostIP: 192.168.88.80
+  phase: Running
+  podIP: 192.168.88.80
+  podIPs:
+  - ip: 192.168.88.80
+  qosClass: Burstable
+  startTime: "2022-01-04T17:03:31Z"

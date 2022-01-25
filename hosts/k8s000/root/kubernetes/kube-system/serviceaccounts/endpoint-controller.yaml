@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2021-12-26T12:29:20Z"
+  name: endpoint-controller
+  namespace: kube-system
+  resourceVersion: "264"
+  uid: d61bce0c-2d61-42b9-974e-2406537c3864
+secrets:
+- name: endpoint-controller-token-896g4
