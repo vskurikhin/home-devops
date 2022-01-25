@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2021-12-26T12:29:23Z"
+  name: certificate-controller
+  namespace: kube-system
+  resourceVersion: "317"
+  uid: 3e002362-c64d-4acd-a600-9df095817c7d
+secrets:
+- name: certificate-controller-token-964wp

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2021-12-26T12:29:37Z"
+  name: pv-protection-controller
+  namespace: kube-system
+  resourceVersion: "399"
+  uid: 18bf22ff-14fa-4c36-ad95-0a6843d75141
+secrets:
+- name: pv-protection-controller-token-nxpjl

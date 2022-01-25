@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2021-12-26T12:29:19Z"
+  name: replication-controller
+  namespace: kube-system
+  resourceVersion: "253"
+  uid: 6ed204bc-be36-4d21-8537-22845f63d2e5
+secrets:
+- name: replication-controller-token-kj5cg
