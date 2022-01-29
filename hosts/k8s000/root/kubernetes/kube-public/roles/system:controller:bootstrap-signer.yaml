@@ -1,0 +1,38 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2021-12-26T12:29:17Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:bootstrap-signer
+  namespace: kube-public
+  resourceVersion: "221"
+  uid: dc5aa43d-a41d-407d-a714-dc26f1505e49
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resourceNames:
+  - cluster-info
+  resources:
+  - configmaps
+  verbs:
+  - update
+- apiGroups:
+  - ""
+  - events.k8s.io
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+  - update
