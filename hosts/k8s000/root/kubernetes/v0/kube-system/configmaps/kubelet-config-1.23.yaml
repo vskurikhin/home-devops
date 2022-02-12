@@ -1,0 +1,55 @@
+apiVersion: v1
+data:
+  kubelet: |
+    apiVersion: kubelet.config.k8s.io/v1beta1
+    authentication:
+      anonymous:
+        enabled: false
+      webhook:
+        cacheTTL: 0s
+        enabled: true
+      x509:
+        clientCAFile: /etc/kubernetes/pki/ca.crt
+    authorization:
+      mode: Webhook
+      webhook:
+        cacheAuthorizedTTL: 0s
+        cacheUnauthorizedTTL: 0s
+    cgroupDriver: systemd
+    clusterDNS:
+    - 10.96.0.10
+    clusterDomain: cluster.local
+    cpuManagerReconcilePeriod: 0s
+    evictionPressureTransitionPeriod: 0s
+    fileCheckFrequency: 0s
+    healthzBindAddress: 127.0.0.1
+    healthzPort: 10248
+    httpCheckFrequency: 0s
+    imageMinimumGCAge: 0s
+    kind: KubeletConfiguration
+    logging:
+      flushFrequency: 0
+      options:
+        json:
+          infoBufferSize: "0"
+      verbosity: 0
+    memorySwap: {}
+    nodeStatusReportFrequency: 0s
+    nodeStatusUpdateFrequency: 0s
+    rotateCertificates: true
+    runtimeRequestTimeout: 0s
+    shutdownGracePeriod: 0s
+    shutdownGracePeriodCriticalPods: 0s
+    staticPodPath: /etc/kubernetes/manifests
+    streamingConnectionIdleTimeout: 0s
+    syncFrequency: 0s
+    volumeStatsAggPeriod: 0s
+kind: ConfigMap
+metadata:
+  annotations:
+    kubeadm.kubernetes.io/component-config.hash: sha256:53821686a8ddaca8403df63803a726d2ab31b145c7da69ed7b78c45d2e223a18
+  creationTimestamp: "2022-01-29T19:55:34Z"
+  name: kubelet-config-1.23
+  namespace: kube-system
+  resourceVersion: "243"
+  uid: f22433b2-daca-449f-8234-aa334f29c2c3
