@@ -1,0 +1,28 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2022-01-29T19:55:33Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system::leader-locking-kube-controller-manager
+  namespace: kube-system
+  resourceVersion: "223"
+  uid: bf5e8ecf-ac83-49c2-866d-cd47bb33ad6f
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - watch
+- apiGroups:
+  - ""
+  resourceNames:
+  - kube-controller-manager
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - update
