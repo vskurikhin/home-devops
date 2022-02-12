@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+data:
+  spec:
+    template:
+      $patch: replace
+      metadata:
+        creationTimestamp: null
+        labels:
+          k8s-app: kube-proxy
+      spec:
+        containers:
+        - command:
+          - /usr/local/bin/kube-proxy
+          - --config=/var/lib/kube-proxy/config.conf
+          - --hostname-override=$(NODE_NAME)
+          env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          image: k8s.gcr.io/kube-proxy:v1.23.3
+          imagePullPolicy: IfNotPresent
+          name: kube-proxy
+          resources: {}
+          securityContext:
+            privileged: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /var/lib/kube-proxy
+            name: kube-proxy
+          - mountPath: /run/xtables.lock
+            name: xtables-lock
+          - mountPath: /lib/modules
+            name: lib-modules
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        hostNetwork: true
+        nodeSelector:
+          kubernetes.io/os: linux
+        priorityClassName: system-node-critical
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: kube-proxy
+        serviceAccountName: kube-proxy
+        terminationGracePeriodSeconds: 30
+        tolerations:
+        - operator: Exists
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: kube-proxy
+          name: kube-proxy
+        - hostPath:
+            path: /run/xtables.lock
+            type: FileOrCreate
+          name: xtables-lock
+        - hostPath:
+            path: /lib/modules
+            type: ""
+          name: lib-modules
+kind: ControllerRevision
+metadata:
+  annotations:
+    deprecated.daemonset.template.generation: "1"
+  creationTimestamp: "2022-01-29T19:55:52Z"
+  labels:
+    controller-revision-hash: 5584f47d6d
+    k8s-app: kube-proxy
+  name: kube-proxy-5584f47d6d
+  namespace: kube-system
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: DaemonSet
+    name: kube-proxy
+    uid: 06a533a8-e3cc-4598-81cb-ad351d9079c2
+  resourceVersion: "430"
+  uid: d95ed34e-b8f5-40fb-ab65-2384381c33d3
+revision: 1
