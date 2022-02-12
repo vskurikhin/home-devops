@@ -1,0 +1,1 @@
+[root@k8s000 ~]# kubectl apply -f raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
