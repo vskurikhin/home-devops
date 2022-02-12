@@ -1,0 +1,169 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubernetes.io/config.hash: b47e1a6130f5246bbe23e9601097d03e
+    kubernetes.io/config.mirror: b47e1a6130f5246bbe23e9601097d03e
+    kubernetes.io/config.seen: "2022-01-29T22:55:07.446995096+03:00"
+    kubernetes.io/config.source: file
+    seccomp.security.alpha.kubernetes.io/pod: runtime/default
+  creationTimestamp: "2022-01-29T19:55:32Z"
+  labels:
+    component: kube-controller-manager
+    tier: control-plane
+  name: kube-controller-manager-k8s000
+  namespace: kube-system
+  ownerReferences:
+  - apiVersion: v1
+    controller: true
+    kind: Node
+    name: k8s000
+    uid: 980e51dd-f99f-4c1c-a9b0-a5fb00bf9a9b
+  resourceVersion: "1701"
+  uid: 600b51de-c0fe-4cb1-ad13-6cfe4df74352
+spec:
+  containers:
+  - command:
+    - kube-controller-manager
+    - --allocate-node-cidrs=true
+    - --authentication-kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --authorization-kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --bind-address=127.0.0.1
+    - --client-ca-file=/etc/kubernetes/pki/ca.crt
+    - --cluster-cidr=10.244.0.0/16
+    - --cluster-name=kubernetes
+    - --cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt
+    - --cluster-signing-key-file=/etc/kubernetes/pki/ca.key
+    - --controllers=*,bootstrapsigner,tokencleaner
+    - --kubeconfig=/etc/kubernetes/controller-manager.conf
+    - --leader-elect=true
+    - --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt
+    - --root-ca-file=/etc/kubernetes/pki/ca.crt
+    - --service-account-private-key-file=/etc/kubernetes/pki/sa.key
+    - --service-cluster-ip-range=10.96.0.0/12
+    - --use-service-account-credentials=true
+    image: k8s.gcr.io/kube-controller-manager:v1.23.3
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 8
+      httpGet:
+        host: 127.0.0.1
+        path: /healthz
+        port: 10257
+        scheme: HTTPS
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 15
+    name: kube-controller-manager
+    resources:
+      requests:
+        cpu: 200m
+    startupProbe:
+      failureThreshold: 24
+      httpGet:
+        host: 127.0.0.1
+        path: /healthz
+        port: 10257
+        scheme: HTTPS
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 15
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/ssl/certs
+      name: ca-certs
+      readOnly: true
+    - mountPath: /etc/pki
+      name: etc-pki
+      readOnly: true
+    - mountPath: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+      name: flexvolume-dir
+    - mountPath: /etc/kubernetes/pki
+      name: k8s-certs
+      readOnly: true
+    - mountPath: /etc/kubernetes/controller-manager.conf
+      name: kubeconfig
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostNetwork: true
+  nodeName: k8s000
+  preemptionPolicy: PreemptLowerPriority
+  priority: 2000001000
+  priorityClassName: system-node-critical
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    operator: Exists
+  volumes:
+  - hostPath:
+      path: /etc/ssl/certs
+      type: DirectoryOrCreate
+    name: ca-certs
+  - hostPath:
+      path: /etc/pki
+      type: DirectoryOrCreate
+    name: etc-pki
+  - hostPath:
+      path: /usr/libexec/kubernetes/kubelet-plugins/volume/exec
+      type: DirectoryOrCreate
+    name: flexvolume-dir
+  - hostPath:
+      path: /etc/kubernetes/pki
+      type: DirectoryOrCreate
+    name: k8s-certs
+  - hostPath:
+      path: /etc/kubernetes/controller-manager.conf
+      type: FileOrCreate
+    name: kubeconfig
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-01-29T19:55:38Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-01-29T20:10:18Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-01-29T20:10:18Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-01-29T19:55:38Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://f0fcbb04b99e2fcea7c959319b9cdeac74337a39ea5d7792a632770db883d075
+    image: k8s.gcr.io/kube-controller-manager:v1.23.3
+    imageID: docker-pullable://k8s.gcr.io/kube-controller-manager@sha256:b721871d9a9c55836cbcbb2bf375e02696260628f73620b267be9a9a50c97f5a
+    lastState:
+      terminated:
+        containerID: docker://cabf3f65ee6686ee28451f4fbc69b6d84f22662f7170ac1cbf3ebbf6e49e650c
+        exitCode: 2
+        finishedAt: "2022-01-29T20:07:18Z"
+        reason: Error
+        startedAt: "2022-01-29T19:55:17Z"
+    name: kube-controller-manager
+    ready: true
+    restartCount: 1
+    started: true
+    state:
+      running:
+        startedAt: "2022-01-29T20:09:54Z"
+  hostIP: 192.168.88.80
+  phase: Running
+  podIP: 192.168.88.80
+  podIPs:
+  - ip: 192.168.88.80
+  qosClass: Burstable
+  startTime: "2022-01-29T19:55:38Z"
