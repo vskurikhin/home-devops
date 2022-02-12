@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  creationTimestamp: "2022-01-29T19:55:34Z"
+  name: kubeadm:nodes-kubeadm-config
+  namespace: kube-system
+  resourceVersion: "240"
+  uid: a7542713-2049-4f84-b65d-64a9a0022f3b
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kubeadm:nodes-kubeadm-config
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: system:bootstrappers:kubeadm:default-node-token
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: system:nodes
