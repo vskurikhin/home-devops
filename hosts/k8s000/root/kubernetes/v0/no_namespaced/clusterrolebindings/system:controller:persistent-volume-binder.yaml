@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2022-01-29T19:55:31Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:persistent-volume-binder
+  resourceVersion: "200"
+  uid: 27e79d99-8e1c-40ca-a6a4-db2dcacf380a
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:controller:persistent-volume-binder
+subjects:
+- kind: ServiceAccount
+  name: persistent-volume-binder
+  namespace: kube-system

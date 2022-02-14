@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2022-01-29T19:55:32Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:certificate-controller
+  resourceVersion: "211"
+  uid: f76840f2-e7ac-43cc-9b00-ff8790d3a0b3
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:controller:certificate-controller
+subjects:
+- kind: ServiceAccount
+  name: certificate-controller
+  namespace: kube-system

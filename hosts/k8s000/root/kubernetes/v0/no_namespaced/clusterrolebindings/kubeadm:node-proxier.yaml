@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2022-01-29T19:55:38Z"
+  name: kubeadm:node-proxier
+  resourceVersion: "324"
+  uid: 1c2a60da-c24c-48b4-8a37-b5b35f26088a
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:node-proxier
+subjects:
+- kind: ServiceAccount
+  name: kube-proxy
+  namespace: kube-system
