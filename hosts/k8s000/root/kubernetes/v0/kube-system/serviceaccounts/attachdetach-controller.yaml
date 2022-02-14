@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-01-29T19:55:37Z"
+  name: attachdetach-controller
+  namespace: kube-system
+  resourceVersion: "299"
+  uid: ceedb33a-95c1-46c6-b9cf-ea46d8cb0960
+secrets:
+- name: attachdetach-controller-token-6d546
