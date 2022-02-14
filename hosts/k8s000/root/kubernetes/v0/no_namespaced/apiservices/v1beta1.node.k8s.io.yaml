@@ -1,0 +1,21 @@
+apiVersion: apiregistration.k8s.io/v1
+kind: APIService
+metadata:
+  creationTimestamp: "2022-01-29T19:55:21Z"
+  labels:
+    kube-aggregator.kubernetes.io/automanaged: onstart
+  name: v1beta1.node.k8s.io
+  resourceVersion: "38"
+  uid: a90775e0-d02a-4502-bbb1-9d8b17869c95
+spec:
+  group: node.k8s.io
+  groupPriorityMinimum: 16300
+  version: v1beta1
+  versionPriority: 9
+status:
+  conditions:
+  - lastTransitionTime: "2022-01-29T19:55:21Z"
+    message: Local APIServices are always available
+    reason: Local
+    status: "True"
+    type: Available
