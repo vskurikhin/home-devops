@@ -1,0 +1,16 @@
+apiVersion: storage.k8s.io/v1
+kind: CSINode
+metadata:
+  annotations:
+    storage.alpha.kubernetes.io/migrated-plugins: kubernetes.io/aws-ebs,kubernetes.io/azure-disk,kubernetes.io/cinder,kubernetes.io/gce-pd
+  creationTimestamp: "2022-01-29T19:55:21Z"
+  name: k8s000
+  ownerReferences:
+  - apiVersion: v1
+    kind: Node
+    name: k8s000
+    uid: 980e51dd-f99f-4c1c-a9b0-a5fb00bf9a9b
+  resourceVersion: "19"
+  uid: ad90991f-ef84-4896-9959-58f4a70bfe71
+spec:
+  drivers: null
