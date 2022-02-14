@@ -1,0 +1,21 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2022-01-29T19:55:25Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:node-bootstrapper
+  resourceVersion: "102"
+  uid: e9360796-c345-45ab-b121-ba10f738f1a2
+rules:
+- apiGroups:
+  - certificates.k8s.io
+  resources:
+  - certificatesigningrequests
+  verbs:
+  - create
+  - get
+  - list
+  - watch
