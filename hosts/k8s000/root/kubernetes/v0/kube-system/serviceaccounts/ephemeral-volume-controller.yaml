@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  creationTimestamp: "2022-01-29T19:55:35Z"
+  name: ephemeral-volume-controller
+  namespace: kube-system
+  resourceVersion: "267"
+  uid: 81f71470-b0b5-4363-bf63-e4bed375ca8e
+secrets:
+- name: ephemeral-volume-controller-token-vdk7m
