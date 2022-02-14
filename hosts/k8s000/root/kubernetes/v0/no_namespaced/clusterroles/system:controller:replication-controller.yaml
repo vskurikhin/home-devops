@@ -1,0 +1,52 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2022-01-29T19:55:27Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:replication-controller
+  resourceVersion: "137"
+  uid: b64f72c2-9a92-4566-918c-9ddf1bcbba62
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - replicationcontrollers
+  verbs:
+  - get
+  - list
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - replicationcontrollers/status
+  verbs:
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - replicationcontrollers/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - create
+  - delete
+  - list
+  - patch
+  - watch
+- apiGroups:
+  - ""
+  - events.k8s.io
+  resources:
+  - events
+  verbs:
+  - create
+  - patch
+  - update
